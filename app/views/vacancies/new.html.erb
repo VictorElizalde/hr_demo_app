@@ -1,0 +1,61 @@
+<%= render "layouts/admins_navbar" %>
+
+<div class="container">
+  <div class="card">
+    <div class="card-content">
+      <div class="card-container">
+        <h4 class="center">New Vacancy</h4>
+        <%= simple_form_for @vacancy, html: { enctype: "multipart/form-data" } do |f| %>
+          <%= f.error_notification %>
+          <% if @vacancy.errors.full_messages.any? %>
+            <% @vacancy.errors.full_messages.each do |error_message| %>
+              <%= " - #{error_message}" %>
+              <br>
+            <% end %>
+          <% end %>
+          <br><br>
+
+          <div class="row">
+            <div class="col s12 m4">
+              <%= f.input :title %>
+            </div>
+            <div class="col s12 m4">
+              <%= f.input :description %>
+            </div>
+            <div class="col s12 m4">
+              <%= f.input :min_salary %>
+            </div>
+            <div class="col s12 m6">
+              <%= f.input :max_salary %>
+            </div>
+            <div class="input-field col s12 m6">
+              <%= f.input_field :published_at, as: :string, class: "datepicker" %>
+              <label class="active"> Published at</label>
+            </div>
+            <div class="col s12 m12">
+              <label><abbr title="required">*</abbr> Company</label>
+              <%= f.association :company, collection: @companies.collect { | comp | [comp.name, comp.id] }, label: false, prompt: 'Seleccionar' %>
+            </div>
+          </div>
+
+          <div class="form-actions row margin_bottom--medium">
+            <%= f.button :button, "Create vacancy", type: "submit", id: "submit-button", class: "create waves waves-effect waves-light" %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    date = Date.now();
+    $('.datepicker').datepicker({
+      yearRange: 150,
+      defaultDate: new Date(date),
+      setDefaultDate: true
+    });
+    $('select').formSelect();
+  });
+</script>

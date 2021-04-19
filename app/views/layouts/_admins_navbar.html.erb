@@ -1,0 +1,37 @@
+<ul id="dropdown1" class="dropdown-content">
+  <li><%= link_to 'Companies', companies_path() %></li>
+  <li><%= link_to 'Vacancies', vacancies_path() %></li>
+  <li><%= link_to 'Candidates', candidates_path() %></li>
+</ul>
+
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <div class="left">
+        <%= link_to root_path do %>
+          <%= image_tag "/assets/hr-logo.png", id: "navbar-image" %>
+        <% end %>
+      </div>
+
+      <ul class="left">
+  			<li><%= link_to 'Actual Menu: Admin', admins_path() %></li>
+  		</ul>
+
+      <ul class="right hide-on-med-and-down">
+        <li><%= link_to 'Companies', companies_path() %></li>
+        <li><%= link_to 'Vacancies', vacancies_path() %></li>
+        <li><%= link_to 'Candidates', candidates_path() %></li>
+      </ul>
+
+      <ul class="right hide-on-large-only">
+  			<li><a class="dropdown-trigger" data-target="dropdown1">Options<i class="material-icons right">arrow_drop_down</i></a></li>
+  		</ul>
+    </div>
+  </nav>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".dropdown-trigger").dropdown();
+	});
+</script>

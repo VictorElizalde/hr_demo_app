@@ -1,0 +1,25 @@
+<%= render "layouts/navbar" %>
+<h4 class="center">Menu</h4>
+<br>
+<div class="container">
+
+  <div class="row">
+    <div class="col s6 m3">
+      <%= link_to admins_path(), class: "btn module-btn" do %>
+        <div class="btn-container">
+          <i class="material-icons">assignment_ind</i>
+          <h6>Admin Interface</h6>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col s6 m3">
+      <%= link_to users_path(), class: "btn module-btn" do %>
+        <div class="btn-container">
+          <i class="material-icons red-text">account_balance</i>
+          <h6>Public Interface</h6>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

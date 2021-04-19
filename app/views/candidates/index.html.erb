@@ -1,0 +1,107 @@
+<%= render "layouts/admins_navbar" %>
+<div class="container">
+
+  <div class="card index-card">
+    <div class="card-content">
+      <h4 class="center">Candidates</h4>
+      <br>
+      <div class="input-field inline">
+        <input id="search_candidate" type="text" class="validate" >
+        <label for="search_candidate">Search</label>
+      </div>
+      <br>
+
+      <br>
+      <% if @candidates.empty? %>
+        <div id="table_candidate">
+          <table class="highlight">
+            <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Last name</th>
+                  <th>Email</th>
+                  <th>Details</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <br>
+        
+        <div class="center">
+          <h6>No candidates exist</h6>
+        </div>
+      <% else %>
+        <div id="table_candidate">
+          <table class="highlight">
+            <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Last name</th>
+                  <th>Email</th>
+                  <th>Details</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @candidates.each do |candidate|%>
+                <tr>
+                  <td><%= candidate.name %></td>
+                  <td><%= candidate.last_name %></td>
+                  <td><%= candidate.email %></td>
+                  <td>
+                    <%= link_to candidate_path(candidate) do %>
+                      <i class="material-icons">info</i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to edit_candidate_path(candidate) do %>
+                      <i class="material-icons">edit</i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to candidate_path(candidate), method: :delete, data: { confirm: 'Are you sure?'} do %>
+                      <i class="material-icons red-text">delete</i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  var searchBox = document.getElementById('search_candidate');
+  searchBox.onkeyup = function(){
+    var filter = searchBox.value.toLowerCase();
+    var tr = document.getElementById('table_candidate').getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+      var td_name = tr[i].getElementsByTagName("td")[0];
+      var td_last_name = tr[i].getElementsByTagName("td")[1];
+      var td_email = tr[i].getElementsByTagName("td")[2];
+
+      if (td_name || td_last_name || td_email) {
+        var txtValue = td_name.textContent || td_name.innerText;
+        var txtValue1 = td_last_name.textContent || td_last_name.innerText;
+        var txtValue2 = td_email.textContent || td_email.innerText;
+
+        if ( txtValue.toLowerCase().indexOf(filter) > -1 ||
+             txtValue1.toLowerCase().indexOf(filter) > -1 ||
+             txtValue2.toLowerCase().indexOf(filter) > -1 ){
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+</script>

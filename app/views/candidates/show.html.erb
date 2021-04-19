@@ -1,0 +1,36 @@
+<%= render "layouts/admins_navbar" %>
+<div class="container">
+  <div class="card">
+    <div class="card-content">
+      <div class="card-container">
+        <h4 class="center">Candidate</h4>
+        <div class="row">
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @candidate.name %>" type="text">
+            <label class="active">Name</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @candidate.last_name %>" type="text">
+            <label class="active">Last name</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @candidate.email %>" type="text">
+            <label class="active">Email</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @candidate.phone %>" type="text">
+            <label class="active">Phone</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @candidate.linkedin_id %>" type="text">
+            <label class="active">LinkedIn</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @candidate.facebook_id %>" type="text">
+            <label class="active">Facebook</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<%= render "layouts/admins_navbar" %>
+<div class="container">
+
+  <div class="card index-card">
+    <div class="card-content">
+      <h4 class="center">Companies</h4>
+      <br>
+      <div class="input-field inline">
+        <input id="search_company" type="text" class="validate" >
+        <label for="search_company">Search</label>
+      </div>
+      <br>
+
+      <%= link_to 'New Company', new_company_path(), class: "btn create waves-light waves-effect" %>
+      <br>
+      <% if @companies.empty? %>
+        <div id="table_company">
+          <table class="highlight">
+            <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Website</th>
+                  <th>Details</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <br>
+        
+        <div class="center">
+          <h6>No companies exist</h6>
+        </div>
+      <% else %>
+        <div id="table_company">
+          <table class="highlight">
+            <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Website</th>
+                  <th>Details</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @companies.each do |company|%>
+                <tr>
+                  <td><%= company.name %></td>
+                  <td><%= company.website %></td>
+                  <td>
+                    <%= link_to company_path(company) do %>
+                      <i class="material-icons">info</i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to edit_company_path(company) do %>
+                      <i class="material-icons">edit</i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to company_path(company), method: :delete, data: { confirm: 'Are you sure?'} do %>
+                      <i class="material-icons red-text">delete</i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  var searchBox = document.getElementById('search_company');
+  searchBox.onkeyup = function(){
+    var filter = searchBox.value.toLowerCase();
+    var tr = document.getElementById('table_company').getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+      var td_name = tr[i].getElementsByTagName("td")[0];
+      var td_website = tr[i].getElementsByTagName("td")[1];
+
+      if (td_name || td_website) {
+        var txtValue = td_name.textContent || td_name.innerText;
+        var txtValue1 = td_website.textContent || td_website.innerText;
+
+        if ( txtValue.toLowerCase().indexOf(filter) > -1 ||
+             txtValue1.toLowerCase().indexOf(filter) > -1 ){
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+</script>

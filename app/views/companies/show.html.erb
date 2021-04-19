@@ -1,0 +1,36 @@
+<%= render "layouts/admins_navbar" %>
+<div class="container">
+  <div class="card">
+    <div class="card-content">
+      <div class="card-container">
+        <h4 class="center">Company</h4>
+        <div class="row">
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @company.name %>" type="text">
+            <label class="active">Name</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @company.contact_name %>" type="text">
+            <label class="active">Contact name</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @company.contact_last_name %>" type="text">
+            <label class="active">Contact last name</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @company.contact_phone %>" type="text">
+            <label class="active">Contact phone</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @company.contact_email %>" type="text">
+            <label class="active">Contact email</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @company.website %>" type="text">
+            <label class="active">Website</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
