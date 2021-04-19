@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_092113) do
+ActiveRecord::Schema.define(version: 2021_04_19_154109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2021_04_16_092113) do
     t.string "facebook_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "candidates_vacancies", id: false, force: :cascade do |t|
+    t.bigint "candidate_id"
+    t.bigint "vacancy_id"
+    t.index ["candidate_id"], name: "index_candidates_vacancies_on_candidate_id"
+    t.index ["vacancy_id"], name: "index_candidates_vacancies_on_vacancy_id"
   end
 
   create_table "companies", force: :cascade do |t|

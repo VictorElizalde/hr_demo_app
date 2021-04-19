@@ -1,0 +1,24 @@
+.notification__wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+
+  &--notice {
+    background: #84DCC6;
+    color: #293241;
+  }
+
+  &--alert {
+    background: #EE6E73;
+    color: #293241;
+  }
+
+  .alert, .notice {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 2.5rem 0;
+    text-align: center;
+  }
+}

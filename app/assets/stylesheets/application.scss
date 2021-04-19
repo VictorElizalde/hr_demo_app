@@ -14,4 +14,30 @@
  *= require_self
  */
  @import "materialize";
- 
+ @import "notification";
+
+ .btn {
+  &.module-btn {
+    border-radius: 3px;
+    background-color: white;
+    color: #424242;
+    height: 100px;
+    width: 100%;
+
+    i {
+      font-size: 2.5rem;
+    }
+    h6 {
+      margin: 0;
+    }
+  }
+  .btn-container {
+    margin-top: 12px;
+  }
+}
+
+#navbar-image {
+  max-height: 56px;
+  padding: 4px;
+  margin: 4px;
+}

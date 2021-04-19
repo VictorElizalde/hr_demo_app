@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   resources :candidates
 
   root 'home#index'
+  get 'admins', to: 'admins#index', as: 'admins'
+  get 'users', to: 'users#index', as: 'users'
+  get 'list_vacancies', to: 'vacancies#list_vacancies', as: 'list_vacancies'
+  get 'see_vacancy/:id', to: 'vacancies#see_vacancy', as: 'see_vacancy'
+  get 'apply_vacancy', to: 'vacancies#apply_vacancy', as: 'apply_vacancy'
 end
