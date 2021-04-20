@@ -1,7 +1,15 @@
 <nav>
   <div class="nav-wrapper">
-      <%= link_to root_path do %>
-        <%= image_tag "/assets/hr-logo.png", id: "navbar-image" %>
-      <% end %>
+    <%= link_to root_path do %>
+      <%= image_tag "/assets/hr-logo.png", id: "navbar-image" %>
+    <% end %>
+
+    <ul class="right hide-on-med-and-down">
+      <li>
+        <%= link_to destroy_candidate_session_path, :method=>'delete' do %>
+          <i class="material-icons red-text">exit_to_app</i>
+        <% end %>
+      </li>
+    </ul>
   </div>
 </nav>

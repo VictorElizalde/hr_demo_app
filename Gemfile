@@ -44,6 +44,12 @@ gem 'materialize-sass'
 # Makes forms easier to write and with less code
 gem 'simple_form'
 
+# Base Authentication
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
+
+# Facebook Authentication
+gem 'omniauth-facebook'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

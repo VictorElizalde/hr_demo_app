@@ -1,7 +1,5 @@
 <ul id="dropdown1" class="dropdown-content">
-  <li><%= link_to 'Companies', companies_path() %></li>
   <li><%= link_to 'Vacancies', vacancies_path() %></li>
-  <li><%= link_to 'Candidates', candidates_path() %></li>
 </ul>
 
 <div class="navbar-fixed">
@@ -14,13 +12,11 @@
       </div>
 
       <ul class="left">
-  			<li><%= link_to 'Actual Menu: Admin', admins_path() %></li>
+  			<li><%= link_to 'Actual Menu: Public', users_path() %></li>
   		</ul>
 
       <ul class="right hide-on-med-and-down">
-        <li><%= link_to 'Companies', companies_path() %></li>
         <li><%= link_to 'Vacancies', vacancies_path() %></li>
-        <li><%= link_to 'Candidates', candidates_path() %></li>
         <li>
           <%= link_to destroy_candidate_session_path, :method=>'delete' do %>
             <i class="material-icons red-text">exit_to_app</i>
