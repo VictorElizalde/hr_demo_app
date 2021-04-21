@@ -36,7 +36,7 @@ class CandidatesController < ApplicationController
     end
   end
 
-  def destroy
+  def delete_candidate
     @candidate = Candidate.find(params[:id])
     @candidate.destroy
     redirect_to candidates_path, notice: 'Candidate deleted successfully.'

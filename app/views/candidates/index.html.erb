@@ -64,7 +64,7 @@
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to candidate_path(candidate), method: :delete, data: { confirm: 'Are you sure?'} do %>
+                    <%= link_to delete_candidate_path(candidate), data: { confirm: 'Are you sure?'}, method: :post do %>
                       <i class="material-icons red-text">delete</i>
                     <% end %>
                   </td>
