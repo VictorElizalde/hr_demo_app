@@ -3,9 +3,11 @@ class Candidate < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_and_belongs_to_many :vacancies
 
   devise :omniauthable, omniauth_providers: %i[facebook]
+
+  has_many :applications
+  has_many :vacancies, :through => :applications
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |candidate|
