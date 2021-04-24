@@ -1,0 +1,13 @@
+<div class="nested-fields row">
+  <div class="row">
+    <div class="col s12 m4">
+      <%= f.input :name, input_html: { value: @candidate.name }, disabled: true  %>
+    </div>
+    <div class="col s12 m4">
+      <%= f.input :last_name, input_html: { value: @candidate.last_name }, disabled: true  %>
+    </div>
+    <div class="col s12 m4">
+      <%= f.input :address, input_html: { value: @candidate.address }, disabled: true  %>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_073747) do
+ActiveRecord::Schema.define(version: 2021_04_24_002149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,11 +37,12 @@ ActiveRecord::Schema.define(version: 2021_04_21_073747) do
   end
 
   create_table "applications", force: :cascade do |t|
-    t.string "linked_in"
+    t.string "personal_site"
     t.bigint "candidate_id"
     t.bigint "vacancy_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bio"
     t.index ["candidate_id"], name: "index_applications_on_candidate_id"
     t.index ["vacancy_id"], name: "index_applications_on_vacancy_id"
   end
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_04_21_073747) do
     t.datetime "remember_created_at"
     t.string "provider"
     t.string "uid"
+    t.string "address"
     t.index ["email"], name: "index_candidates_on_email", unique: true
     t.index ["reset_password_token"], name: "index_candidates_on_reset_password_token", unique: true
   end

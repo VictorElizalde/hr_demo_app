@@ -46,7 +46,7 @@ class CandidatesController < ApplicationController
 
   private
     def candidate_params
-      params.require(:candidate).permit(:name, :last_name, :email, :phone, :linkedin_id, :facebook_id)
+      params.require(:candidate).permit(:name, :last_name, :email, :phone, :linkedin_id, :facebook_id, :address)
     end
 
     def redirect_unless_admin
