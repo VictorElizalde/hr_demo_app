@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :vacancies do
     resources :applications, only: [:new, :create]
   end
-  resources :candidates, only: [:index, :edit]
+  resources :candidates, only: [:index, :edit, :new, :create]
 
   root 'home#index'
   get 'admins', to: 'admins#index', as: 'admins'
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   patch "/candidate/:id" => "candidates#update", as: :update_candidate
   get "/candidate/:id" => "candidates#show", as: :candidate
   get 'applications', to: 'applications#index', as: 'applications'
+  get 'candidates_admins', to: 'candidates#index_admins', as: 'candidates_admins'
 
   devise_for :candidates, controllers: { omniauth_callbacks: 'candidates/omniauth_callbacks' }
 end

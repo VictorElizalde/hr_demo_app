@@ -2,7 +2,11 @@ class CandidatesController < ApplicationController
   before_action :redirect_unless_admin
 
   def index
-    @candidates = Candidate.all
+    @candidates = Candidate.where(role: 'candidate')
+  end
+
+  def index_admins
+    @candidates = Candidate.where(role: 'admin')
   end
 
   def show
@@ -19,11 +23,16 @@ class CandidatesController < ApplicationController
 
   def create
     @candidate = Candidate.new(candidate_params)
-    if @candidate.save
-      redirect_to candidates_path, notice: 'Candidate created successfully.'
-    else
-      flash[:alert] = 'Candidate not created.'
-      render 'new'
+    @candidate.role = 'admin'
+
+    respond_to do |format|
+      if @candidate.save
+        format.html { redirect_to admins_path, notice: 'Admin was successfully created.' }
+        format.json { render json: @candidate, status: :created, location: [:admin,@candidate] }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @candidate.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -46,7 +55,7 @@ class CandidatesController < ApplicationController
 
   private
     def candidate_params
-      params.require(:candidate).permit(:name, :last_name, :email, :phone, :linkedin_id, :facebook_id, :address)
+      params.require(:candidate).permit(:name, :last_name, :email, :phone, :linkedin_id, :facebook_id, :address, :password, :password_confirmation)
     end
 
     def redirect_unless_admin

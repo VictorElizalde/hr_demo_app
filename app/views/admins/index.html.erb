@@ -30,5 +30,25 @@
         </div>
       <% end %>
     </div>
+
+    <div class="col s6 m3">
+      <%= link_to candidates_admins_path(), class: "btn module-btn" do %>
+        <div class="btn-container">
+          <i class="material-icons red-text">business_center</i>
+          <h6>Admins</h6>
+        </div>
+      <% end %>
+    </div>
   </div>
+
+    <div class="row">
+      <div class="col s6 m3">
+        <%= link_to new_candidate_path(:candidate), class: "btn module-btn" do %>
+          <div class="btn-container">
+            <i class="material-icons">group_add</i>
+            <h6>Create Admins</h6>
+          </div>
+        <% end %>
+      </div>
+    </div>
 </div>
