@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  include CheckAdminConcern
   before_action :redirect_unless_admin
 
   def index
@@ -45,14 +46,8 @@ class CompaniesController < ApplicationController
   end
 
   private
-    def company_params
-      params.require(:company).permit(:name, :contact_name, :contact_last_name, :contact_phone, :contact_email, :website)
-    end
 
-    def redirect_unless_admin
-      if current_candidate.try(:role) != "admin"
-        flash[:alert] = "Only admins can enter"
-        redirect_to root_path
-      end
-    end
+  def company_params
+    params.require(:company).permit(:name, :contact_name, :contact_last_name, :contact_phone, :contact_email, :website)
+  end
 end

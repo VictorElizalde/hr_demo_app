@@ -1,6 +1,7 @@
 class VacanciesController < ApplicationController
+  include CheckAdminConcern
   before_action :redirect_unless_admin, except: [:list_vacancies, :see_vacancy]
-  
+
   def index
     @vacancies = Vacancy.all.includes(:company)
   end
@@ -58,14 +59,8 @@ class VacanciesController < ApplicationController
   end
 
   private
-    def vacancy_params
-      params.require(:vacancy).permit(:title, :description, :min_salary, :max_salary, :published_at, :company_id)
-    end
 
-    def redirect_unless_admin
-      if current_candidate.try(:role) != "admin"
-        flash[:alert] = "Only admins can enter"
-        redirect_to root_path
-      end
-    end
+  def vacancy_params
+    params.require(:vacancy).permit(:title, :description, :min_salary, :max_salary, :published_at, :company_id)
+  end
 end

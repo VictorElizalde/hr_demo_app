@@ -1,4 +1,5 @@
 class CandidatesController < ApplicationController
+  include CheckAdminConcern
   before_action :redirect_unless_admin
 
   def index
@@ -28,9 +29,9 @@ class CandidatesController < ApplicationController
     respond_to do |format|
       if @candidate.save
         format.html { redirect_to admins_path, notice: 'Admin was successfully created.' }
-        format.json { render json: @candidate, status: :created, location: [:admin,@candidate] }
+        format.json { render json: @candidate, status: :created, location: [:admin, @candidate] }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @candidate.errors, status: :unprocessable_entity }
       end
     end
@@ -54,14 +55,8 @@ class CandidatesController < ApplicationController
   end
 
   private
-    def candidate_params
-      params.require(:candidate).permit(:name, :last_name, :email, :phone, :linkedin_id, :facebook_id, :address, :password, :password_confirmation)
-    end
 
-    def redirect_unless_admin
-      if current_candidate.try(:role) != "admin"
-        flash[:alert] = "Only admins can enter"
-        redirect_to root_path
-      end
-    end
+  def candidate_params
+    params.require(:candidate).permit(:name, :last_name, :email, :phone, :linkedin_id, :facebook_id, :address, :password, :password_confirmation)
+  end
 end
