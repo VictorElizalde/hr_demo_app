@@ -13,10 +13,15 @@
  *= require_tree .
  *= require_self
  */
- @import "materialize";
- @import "notification";
+@import "materialize/components/color-variables";
 
- .btn {
+$primary-color: #151515 !default;
+$secondary-color: #d81b60 !default;
+
+@import "materialize";
+@import "notification";
+
+.btn {
   &.module-btn {
     border-radius: 3px;
     background-color: white;
