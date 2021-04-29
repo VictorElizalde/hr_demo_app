@@ -5,23 +5,9 @@
 
   <div class="row">
     <% if current_candidate.role == 'admin'%>
-      <div class="col s6 m3">
-        <%= link_to admins_path(), class: "btn module-btn" do %>
-          <div class="btn-container">
-            <i class="material-icons">assignment_ind</i>
-            <h6>Admin Interface</h6>
-          </div>
-        <% end %>
-      </div>
+      <%= render partial: 'layouts/menu_option', locals: {path: admins_path(), icon: 'assignment_ind', title: 'Admin Interface'} %>
     <% end %>
 
-    <div class="col s6 m3">
-      <%= link_to users_path(), class: "btn module-btn" do %>
-        <div class="btn-container">
-          <i class="material-icons red-text">account_balance</i>
-          <h6>Public Interface</h6>
-        </div>
-      <% end %>
-    </div>
+    <%= render partial: 'layouts/menu_option', locals: {path: users_path(), icon: 'account_balance', title: 'Public Interface'} %>
   </div>
 </div>

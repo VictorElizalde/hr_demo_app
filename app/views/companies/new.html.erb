@@ -6,14 +6,7 @@
       <div class="card-container">
         <h4 class="center">New Company</h4>
         <%= simple_form_for @company, html: { enctype: "multipart/form-data" } do |f| %>
-          <%= f.error_notification %>
-          <% if @company.errors.full_messages.any? %>
-            <% @company.errors.full_messages.each do |error_message| %>
-              <%= " - #{error_message}" %>
-              <br>
-            <% end %>
-          <% end %>
-          <br><br>
+          <%= render partial: 'layouts/errors', locals: { f: f, model: @company } %>
 
           <div class="row">
             <div class="col s12 m4">

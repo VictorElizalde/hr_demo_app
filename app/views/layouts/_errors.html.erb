@@ -1,0 +1,8 @@
+<%= f.error_notification %>
+<% if model.errors.full_messages.any? %>
+  <% model.errors.full_messages.each do |error_message| %>
+    <%= " - #{error_message}" %>
+    <br>
+  <% end %>
+<% end %>
+<br><br>
