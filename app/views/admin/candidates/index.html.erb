@@ -1,7 +1,8 @@
+<%= render "layouts/admins_navbar" %>
 <div class="container">
   <div class="card index-card">
     <div class="card-content">
-      <h4 class="center">Candidates</h4>
+      <h4 class="center"><%= Candidates %></h4>
       <br>
       <div class="input-field inline">
         <input id="search_candidate" type="text" class="validate" >
@@ -24,17 +25,17 @@
                   <td><%= candidate.last_name %></td>
                   <td><%= candidate.email %></td>
                   <td>
-                    <%= link_to candidate_path(candidate) do %>
+                    <%= link_to admin_candidate_path(candidate) do %>
                       <i class="material-icons">info</i>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to edit_candidate_path(candidate) do %>
+                    <%= link_to edit_admin_candidate_path(candidate) do %>
                       <i class="material-icons">edit</i>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to delete_candidate_path(candidate), data: { confirm: 'Are you sure?'}, method: :post do %>
+                    <%= link_to admin_delete_candidate_path(candidate), data: { confirm: 'Are you sure?'}, method: :post do %>
                       <i class="material-icons red-text">delete</i>
                     <% end %>
                   </td>

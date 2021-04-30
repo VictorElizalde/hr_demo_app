@@ -1,4 +1,4 @@
-class CompaniesController < ApplicationController
+class Admin::CompaniesController < ApplicationController
   include CheckAdminConcern
   before_action :redirect_unless_admin
 
@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
-      redirect_to companies_path, notice: 'Company created successfully.'
+      redirect_to admin_companies_path, notice: 'Company created successfully.'
     else
       flash[:alert] = 'Company not created.'
       render 'new'
@@ -32,7 +32,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
 
     if @company.update(company_params)
-      redirect_to companies_path, notice: 'Company updated successfully.'
+      redirect_to admin_companies_path, notice: 'Company updated successfully.'
     else
       flash[:alert] = 'Company not updated'
       render 'edit'
@@ -42,7 +42,7 @@ class CompaniesController < ApplicationController
   def destroy
     @company = Company.find(params[:id])
     @company.destroy
-    redirect_to companies_path, notice: 'Company deleted successfully.'
+    redirect_to admin_companies_path, notice: 'Company deleted successfully.'
   end
 
   private

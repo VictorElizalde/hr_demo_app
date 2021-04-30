@@ -5,7 +5,7 @@
 
   <div class="row">
     <% if current_candidate.role == 'admin'%>
-      <%= render partial: 'layouts/menu_option', locals: {path: admins_path(), icon: 'assignment_ind', title: 'Admin Interface'} %>
+      <%= render partial: 'layouts/menu_option', locals: {path: admin_admins_path(), icon: 'assignment_ind', title: 'Admin Interface'} %>
     <% end %>
 
     <%= render partial: 'layouts/menu_option', locals: {path: users_path(), icon: 'account_balance', title: 'Public Interface'} %>

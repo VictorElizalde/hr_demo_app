@@ -25,7 +25,7 @@
                   <td><%= "#{application.candidate.name} #{application.candidate.last_name}" %></td>
                   <td><%= application.vacancy.title %></td>
                   <td>
-                    <%= simple_form_for [application.vacancy, application] do |f| %>
+                    <%= simple_form_for [:admin, application.vacancy, application] do |f| %>
                       <%= f.input :status, collection: ["pending", "in_progress", "accepted", "declined"], label: false %>
 
                       <div class="form-actions">

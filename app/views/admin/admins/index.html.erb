@@ -1,0 +1,17 @@
+<%= render "layouts/admins_navbar" %>
+<h4 class="center">Admin Menu</h4>
+<br>
+<div class="container">
+
+  <div class="row">
+    <%= render partial: 'layouts/menu_option', locals: {path: admin_companies_path(), icon: 'assignment_ind', title: 'Companies'} %>
+    <%= render partial: 'layouts/menu_option', locals: {path: admin_vacancies_path(), icon: 'access_alarm', title: 'Vacancies'} %>
+    <%= render partial: 'layouts/menu_option', locals: {path: admin_candidates_path(), icon: 'account_balance', title: 'Candidates'} %>
+    <%= render partial: 'layouts/menu_option', locals: {path: admin_administrators_path(), icon: 'business_center', title: 'Admins'} %>
+  </div>
+
+  <div class="row">
+    <%= render partial: 'layouts/menu_option', locals: {path: new_admin_administrator_path(:candidate), icon: 'group_add', title: 'Create Admins'} %>
+    <%= render partial: 'layouts/menu_option', locals: {path: admin_applications_path(), icon: 'info', title: 'Applications'} %>
+  </div>
+</div>
