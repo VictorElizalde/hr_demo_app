@@ -5,30 +5,7 @@
       <div class="card-container">
         <h4 class="center">Vacancy</h4>
         <div class="row">
-          <div class="input-field col s12 m4">
-            <input disabled value="<%= @vacancy.title %>" type="text">
-            <label class="active">Name</label>
-          </div>
-          <div class="input-field col s12 m4">
-            <input disabled value="<%= @vacancy.description %>" type="text">
-            <label class="active">Description</label>
-          </div>
-          <div class="input-field col s12 m4">
-            <input disabled value="<%= @vacancy.min_salary %>" type="text">
-            <label class="active">Min salary</label>
-          </div>
-          <div class="input-field col s12 m4">
-            <input disabled value="<%= @vacancy.max_salary %>" type="text">
-            <label class="active">Max salary</label>
-          </div>
-          <div class="input-field col s12 m4">
-            <input disabled value="<%= @vacancy.published_at.strftime('%d/%m/%Y') %>" type="text">
-            <label class="active">Published at</label>
-          </div>
-          <div class="input-field col s12 m4">
-            <input disabled value="<%= @vacancy.company.name %>" type="text">
-            <label class="active">Company</label>
-          </div>
+          <%= render partial: 'vacancy_show' %>
         </div>
 
         <div class="row">

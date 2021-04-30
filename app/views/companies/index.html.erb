@@ -14,37 +14,11 @@
       <%= link_to 'New Company', new_company_path(), class: "btn create waves-light waves-effect" %>
       <br>
       <% if @companies.empty? %>
-        <div id="table_company">
-          <table class="highlight">
-            <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Website</th>
-                  <th>Details</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-
-        <br>
-        
-        <div class="center">
-          <h6>No companies exist</h6>
-        </div>
+        <%= render partial: 'layouts/empty_table', locals: { headers: ['Name', 'Website', 'Details', 'Edit', 'Delete'], model: "company" } %>
       <% else %>
         <div id="table_company">
           <table class="highlight">
-            <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Website</th>
-                  <th>Details</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-              </tr>
-            </thead>
+            <%= render partial: 'layouts/table_headers', locals: { headers: ['Name', 'Website', 'Details', 'Edit', 'Delete'] } %>
 
             <tbody>
               <% @companies.each do |company|%>

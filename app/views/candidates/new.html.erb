@@ -24,10 +24,7 @@
                         input_html: { autocomplete: "new-password" } %>
           </div>
 
-          <div class="form-actions row margin_bottom--medium">
-            <%= f.button :button, "Create admin", type: "submit", id: "submit-button", class: "create waves waves-effect waves-light" %>
-          </div>
-
+          <%= render partial: 'layouts/submit_button', locals: { f: f, button_message: "Create admin" } %>
         <% end %>
       </div>
     </div>

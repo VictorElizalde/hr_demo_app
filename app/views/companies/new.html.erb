@@ -29,10 +29,7 @@
             </div>
           </div>
 
-          <div class="form-actions row margin_bottom--medium">
-            <%= f.button :button, "Create company", type: "submit", id: "submit-button", class: "create waves waves-effect waves-light" %>
-          </div>
-
+          <%= render partial: 'layouts/submit_button', locals: { f: f, button_message: "Create company" } %>
         <% end %>
       </div>
     </div>

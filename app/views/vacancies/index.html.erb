@@ -14,41 +14,11 @@
       <%= link_to 'New Vacancy', new_vacancy_path(), class: "btn create waves-light waves-effect" %>
       <br>
       <% if @vacancies.empty? %>
-        <div id="table_vacancy">
-          <table class="highlight">
-            <thead>
-              <tr>
-                  <th>Title</th>
-                  <th>Min Salary</th>
-                  <th>Max Salary</th>
-                  <th>Company</th>
-                  <th>Details</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-
-        <br>
-        
-        <div class="center">
-          <h6>No vacancies exist</h6>
-        </div>
+        <%= render partial: 'layouts/empty_table', locals: { headers: ['Title', 'Min Salary', 'Max Salary', 'Company', 'Details', 'Edit', 'Delete'], model: "vacancy" } %>
       <% else %>
         <div id="table_vacancy">
           <table class="highlight">
-            <thead>
-              <tr>
-                  <th>Title</th>
-                  <th>Min Salary</th>
-                  <th>Max Salary</th>
-                  <th>Company</th>
-                  <th>Details</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-              </tr>
-            </thead>
+            <%= render partial: 'layouts/table_headers', locals: { headers: ['Title', 'Min Salary', 'Max Salary', 'Company', 'Details', 'Edit', 'Delete'] } %>
 
             <tbody>
               <% @vacancies.each do |vacancy|%>

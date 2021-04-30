@@ -12,35 +12,11 @@
       <br>
       <br>
       <% if @vacancies.empty? %>
-        <div id="table_vacancy">
-          <table class="highlight">
-            <thead>
-              <tr>
-                  <th>Title</th>
-                  <th>Company</th>
-                  <th>Salary Range</th>
-                  <th>Details</th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-
-        <br>
-        
-        <div class="center">
-          <h6>No vacancies exist</h6>
-        </div>
+        <%= render partial: 'layouts/empty_table', locals: { headers: ['Title', 'Company', 'Salary Range', 'Details'], model: "vacancy" } %>
       <% else %>
         <div id="table_vacancy">
           <table class="highlight">
-            <thead>
-              <tr>
-                  <th>Title</th>
-                  <th>Company</th>
-                  <th>Salary Range</th>
-                  <th>Details</th>
-              </tr>
-            </thead>
+            <%= render partial: 'layouts/table_headers', locals: { headers: ['Title', 'Company', 'Salary Range', 'Details'] } %>
 
             <tbody>
               <% @vacancies.each do |vacancy|%>

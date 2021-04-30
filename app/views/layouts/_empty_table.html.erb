@@ -1,0 +1,11 @@
+<div id=<%= "table_" + model %>>
+  <table class="highlight">
+    <%= render partial: 'layouts/table_headers', locals: { headers: headers } %>
+  </table>
+</div>
+
+<br>
+
+<div class="center">
+  <h6>No <%= model.pluralize %> exist</h6>
+</div>

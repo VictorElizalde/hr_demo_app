@@ -13,33 +13,11 @@
 
       <br>
       <% if @applications.empty? %>
-        <div id="table_application">
-          <table class="highlight">
-            <thead>
-              <tr>
-                <th>Candidate name</th>
-                <th>Vacancy title</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-
-        <br>
-        
-        <div class="center">
-          <h6>No applications exist</h6>
-        </div>
+        <%= render partial: 'layouts/empty_table', locals: { headers: ['Candidate name', 'Vacancy title', 'Status'], model: "application" } %>
       <% else %>
         <div id="table_application">
           <table class="highlight">
-            <thead>
-              <tr>
-                <th>Candidate name</th>
-                <th>Vacancy title</th>
-                <th>Status</th>
-              </tr>
-            </thead>
+            <%= render partial: 'layouts/table_headers', locals: { headers: ['Candidate name', 'Vacancy title', 'Status'] } %>
 
             <tbody>
               <% @applications.each do |application|%>
