@@ -1,5 +1,5 @@
 <ul id="dropdown1" class="dropdown-content">
-  <li><%= link_to 'Vacancies', vacancies_path() %></li>
+  <li><%= link_to 'Vacancies', admin_vacancies_path() %></li>
 </ul>
 
 <div class="navbar-fixed">
@@ -16,7 +16,7 @@
   		</ul>
 
       <ul class="right hide-on-med-and-down">
-        <li><%= link_to 'Vacancies', vacancies_path() %></li>
+        <li><%= link_to 'Vacancies', admin_vacancies_path() %></li>
         <li>
           <%= link_to destroy_candidate_session_path, :method=>'delete' do %>
             <i class="material-icons red-text">exit_to_app</i>
