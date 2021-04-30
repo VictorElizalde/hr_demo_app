@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
   namespace :admin do
     resources :companies
     resources :vacancies, only: [:new, :create, :edit, :update, :index, :show, :destroy] do

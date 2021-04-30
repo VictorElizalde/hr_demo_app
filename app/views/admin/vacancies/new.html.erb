@@ -4,8 +4,8 @@
   <div class="card">
     <div class="card-content">
       <div class="card-container">
-        <h4 class="center">Edit Vacancy</h4>
-        <%= simple_form_for @vacancy, html: { enctype: "multipart/form-data" } do |f| %>
+        <h4 class="center">New Vacancy</h4>
+        <%= simple_form_for [:admin, @vacancy], html: { enctype: "multipart/form-data" } do |f| %>
           <%= render partial: 'layouts/errors', locals: { f: f, model: @vacancy } %>
 
           <div class="row">
@@ -31,7 +31,7 @@
             </div>
           </div>
 
-          <%= render partial: 'layouts/submit_button', locals: { f: f, button_message: "Update vacancy" } %>
+          <%= render partial: 'layouts/submit_button', locals: { f: f, button_message: "Create vacancy" } %>
         <% end %>
       </div>
     </div>

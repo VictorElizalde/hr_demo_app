@@ -5,7 +5,7 @@
     <div class="card-content">
       <div class="card-container">
         <h4 class="center">Edit Candidate</h4>
-        <%= simple_form_for @candidate, html: { enctype: "multipart/form-data" } do |f| %>
+        <%= simple_form_for [:admin, @candidate], html: { enctype: "multipart/form-data" } do |f| %>
           <%= render partial: 'layouts/errors', locals: { f: f, model: @candidate} %>
 
           <div class="row">

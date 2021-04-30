@@ -11,7 +11,7 @@
       </div>
       <br>
 
-      <%= link_to 'New Company', new_company_path(), class: "btn create waves-light waves-effect" %>
+      <%= link_to 'New Company', new_admin_company_path(), class: "btn create waves-light waves-effect" %>
       <br>
       <% if @companies.empty? %>
         <%= render partial: 'layouts/empty_table', locals: { headers: ['Name', 'Website', 'Details', 'Edit', 'Delete'], model: "company" } %>
@@ -26,17 +26,17 @@
                   <td><%= company.name %></td>
                   <td><%= company.website %></td>
                   <td>
-                    <%= link_to company_path(company) do %>
+                    <%= link_to admin_company_path(company) do %>
                       <i class="material-icons">info</i>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to edit_company_path(company) do %>
+                    <%= link_to edit_admin_company_path(company) do %>
                       <i class="material-icons">edit</i>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to company_path(company), method: :delete, data: { confirm: 'Are you sure?'} do %>
+                    <%= link_to admin_company_path(company), method: :delete, data: { confirm: 'Are you sure?'} do %>
                       <i class="material-icons red-text">delete</i>
                     <% end %>
                   </td>

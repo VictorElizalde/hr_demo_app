@@ -1,0 +1,32 @@
+<%= render "layouts/admins_navbar" %>
+
+<div class="container">
+  <div class="card">
+    <div class="card-content">
+      <div class="card-container">
+        <h4 class="center">New Admin</h4>
+        <%= simple_form_for [:admin, @administrator], url: admin_administrators_path, html: { enctype: "multipart/form-data" } do |f| %>
+          <%= render partial: 'layouts/errors', locals: { f: f, model: @administrator } %>
+
+          <div class="form-inputs">
+            <%= f.input :name %>
+            <%= f.input :last_name %>
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+          </div>
+
+          <%= render partial: 'layouts/submit_button', locals: { f: f, button_message: "Create admin" } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

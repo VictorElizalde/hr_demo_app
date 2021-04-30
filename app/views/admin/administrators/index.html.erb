@@ -1,0 +1,80 @@
+<%= render "layouts/admins_navbar" %>
+<div class="container">
+  <div class="card index-card">
+    <div class="card-content">
+      <h4 class="center">Admins</h4>
+      <br>
+      <div class="input-field inline">
+        <input id="search_candidate" type="text" class="validate" >
+        <label for="search_candidate">Search</label>
+      </div>
+      <br>
+
+      <br>
+      <% if @administrators.empty? %>
+          <%= render partial: 'layouts/empty_table', locals: { headers: ['Name', 'Last name', 'Email', 'Details', 'Edit', 'Delete'], model: "candidate" } %>
+      <% else %>
+        <div id="table_candidate">
+          <table class="highlight">
+            <%= render partial: 'layouts/table_headers', locals: { headers: ['Name', 'Last name', 'Email', 'Details', 'Edit', 'Delete'] } %>
+
+            <tbody>
+              <% @administrators.each do |administrator|%>
+                <tr>
+                  <td><%= administrator.name %></td>
+                  <td><%= administrator.last_name %></td>
+                  <td><%= administrator.email %></td>
+                  <td>
+                    <%= link_to admin_administrator_path(administrator) do %>
+                      <i class="material-icons">info</i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to edit_admin_administrator_path(administrator) do %>
+                      <i class="material-icons">edit</i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to admin_delete_administrator_path(administrator), data: { confirm: 'Are you sure?'}, method: :post do %>
+                      <i class="material-icons red-text">delete</i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  var searchBox = document.getElementById('search_candidate');
+  searchBox.onkeyup = function(){
+    var filter = searchBox.value.toLowerCase();
+    var tr = document.getElementById('table_candidate').getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+      var td_name = tr[i].getElementsByTagName("td")[0];
+      var td_last_name = tr[i].getElementsByTagName("td")[1];
+      var td_email = tr[i].getElementsByTagName("td")[2];
+
+      if (td_name || td_last_name || td_email) {
+        var txtValue = td_name.textContent || td_name.innerText;
+        var txtValue1 = td_last_name.textContent || td_last_name.innerText;
+        var txtValue2 = td_email.textContent || td_email.innerText;
+
+        if ( txtValue.toLowerCase().indexOf(filter) > -1 ||
+             txtValue1.toLowerCase().indexOf(filter) > -1 ||
+             txtValue2.toLowerCase().indexOf(filter) > -1 ){
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+</script>
