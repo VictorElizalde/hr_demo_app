@@ -11,7 +11,7 @@
       </div>
       <br>
 
-      <%= link_to 'New Vacancy', new_vacancy_path(), class: "btn create waves-light waves-effect" %>
+      <%= link_to 'New Vacancy', new_admin_vacancy_path(), class: "btn create waves-light waves-effect" %>
       <br>
       <% if @vacancies.empty? %>
         <%= render partial: 'layouts/empty_table', locals: { headers: ['Title', 'Min Salary', 'Max Salary', 'Company', 'Details', 'Edit', 'Delete'], model: "vacancy" } %>
@@ -28,17 +28,17 @@
                   <td><%= vacancy.max_salary %></td>
                   <td><%= vacancy.company.name %></td>
                   <td>
-                    <%= link_to vacancy_path(vacancy) do %>
+                    <%= link_to admin_vacancy_path(vacancy) do %>
                       <i class="material-icons">info</i>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to edit_vacancy_path(vacancy) do %>
+                    <%= link_to edit_admin_vacancy_path(vacancy) do %>
                       <i class="material-icons">edit</i>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to vacancy_path(vacancy), method: :delete, data: { confirm: 'Are you sure?'} do %>
+                    <%= link_to admin_vacancy_path(vacancy), method: :delete, data: { confirm: 'Are you sure?'} do %>
                       <i class="material-icons red-text">delete</i>
                     <% end %>
                   </td>

@@ -1,0 +1,40 @@
+<%= render "layouts/admins_navbar" %>
+<div class="container">
+  <div class="card">
+    <div class="card-content">
+      <div class="card-container">
+        <h4 class="center">Administrator</h4>
+        <div class="row">
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @administrator.name %>" type="text">
+            <label class="active">Name</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @administrator.last_name %>" type="text">
+            <label class="active">Last name</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @administrator.email %>" type="text">
+            <label class="active">Email</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @administrator.phone %>" type="text">
+            <label class="active">Phone</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @administrator.linkedin_id %>" type="text">
+            <label class="active">LinkedIn</label>
+          </div>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @administrator.facebook_id %>" type="text">
+            <label class="active">Facebook</label>
+          </div>
+          <div class="input-field col s12 m12">
+            <input disabled value="<%= @administrator.address %>" type="text">
+            <label class="active">Address</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
