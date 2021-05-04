@@ -4,6 +4,7 @@ class Admin::CompaniesController < ApplicationController
 
   def index
     @companies = Company.all
+    render json: @companies
   end
 
   def show
@@ -21,7 +22,7 @@ class Admin::CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
-      redirect_to admin_companies_path, notice: 'Company created successfully.'
+      render json: @company
     else
       flash[:alert] = 'Company not created.'
       render 'new'
@@ -32,7 +33,7 @@ class Admin::CompaniesController < ApplicationController
     @company = Company.find(params[:id])
 
     if @company.update(company_params)
-      redirect_to admin_companies_path, notice: 'Company updated successfully.'
+      render json: @company
     else
       flash[:alert] = 'Company not updated'
       render 'edit'
@@ -42,7 +43,7 @@ class Admin::CompaniesController < ApplicationController
   def destroy
     @company = Company.find(params[:id])
     @company.destroy
-    redirect_to admin_companies_path, notice: 'Company deleted successfully.'
+    head :no_content, status: :ok
   end
 
   private
