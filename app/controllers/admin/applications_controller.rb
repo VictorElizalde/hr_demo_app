@@ -1,5 +1,6 @@
 class Admin::ApplicationsController < ApplicationController
   include CheckAdminConcern
+  before_action :authenticate_candidate!
   before_action :redirect_unless_admin, only: [:update, :index]
 
   def index

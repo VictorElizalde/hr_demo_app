@@ -1,28 +1,29 @@
 class Admin::CompaniesController < ApplicationController
   include CheckAdminConcern
+  before_action :authenticate_candidate!
   before_action :redirect_unless_admin
 
   def index
-    @companies = Company.all
-    render json: @companies
+    companies = Company.all
+    render json: companies
   end
 
   def show
-    @company = Company.find(params[:id])
+    company = Company.find(params[:id])
   end
 
   def new
-    @company = Company.new
+    company = Company.new
   end
 
   def edit
-    @company = Company.find(params[:id])
+    company = Company.find(params[:id])
   end
 
   def create
-    @company = Company.new(company_params)
-    if @company.save
-      render json: @company
+    company = Company.new(company_params)
+    if company.save
+      render json: company
     else
       flash[:alert] = 'Company not created.'
       render 'new'
@@ -30,10 +31,10 @@ class Admin::CompaniesController < ApplicationController
   end
 
   def update
-    @company = Company.find(params[:id])
+    company = Company.find(params[:id])
 
-    if @company.update(company_params)
-      render json: @company
+    if company.update(company_params)
+      render json: company
     else
       flash[:alert] = 'Company not updated'
       render 'edit'
@@ -41,8 +42,8 @@ class Admin::CompaniesController < ApplicationController
   end
 
   def destroy
-    @company = Company.find(params[:id])
-    @company.destroy
+    company = Company.find(params[:id])
+    company.destroy
     head :no_content, status: :ok
   end
 

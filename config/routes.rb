@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope '/api/v1' do
+  scope '/api/v1', defaults: { format: :json } do
     namespace :admin do
       resources :companies
       resources :vacancies, only: [:new, :create, :edit, :update, :index, :show, :destroy] do

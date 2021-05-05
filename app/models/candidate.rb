@@ -9,6 +9,12 @@ class Candidate < ApplicationRecord
   has_many :applications
   has_many :vacancies, :through => :applications
 
+  def generate_jwt
+    JWT.encode({ id: id,
+                exp: 60.days.from_now.to_i },
+               Rails.application.secrets.secret_key_base)
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |candidate|
       name_split = auth.info.name.split(" ")
