@@ -17,16 +17,16 @@ Rails.application.routes.draw do
       get 'applications', to: 'applications#index', as: 'applications'
       get 'admins', to: 'admins#index', as: 'admins'
     end
-  
+
     resources :vacancies, except: [:new, :create, :edit, :update, :index, :show, :destroy] do
       resources :applications, only: [:new, :create]
     end
-    
+
     root 'home#index'
     get 'users', to: 'users#index', as: 'users'
     get 'list_vacancies', to: 'vacancies#list_vacancies', as: 'list_vacancies'
     get 'see_vacancy/:id', to: 'vacancies#see_vacancy', as: 'see_vacancy'
-  
+
     devise_for :candidates, controllers: { omniauth_callbacks: 'candidates/omniauth_callbacks' }
   end
 end
