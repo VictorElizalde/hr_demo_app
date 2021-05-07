@@ -1,6 +1,4 @@
 class ApplicationsController < ApplicationController
-  before_action :authenticate_candidate!
-  
   def new
     @vacancy = Vacancy.find(params[:vacancy_id])
     @application = Application.new
