@@ -27,6 +27,13 @@ Rails.application.routes.draw do
     get 'list_vacancies', to: 'vacancies#list_vacancies', as: 'list_vacancies'
     get 'see_vacancy/:id', to: 'vacancies#see_vacancy', as: 'see_vacancy'
 
-    devise_for :candidates, controllers: { omniauth_callbacks: 'candidates/omniauth_callbacks' }
+    devise_for :candidates, controllers: { 
+      omniauth_callbacks: 'candidates/omniauth_callbacks',
+      registrations: 'candidates/registrations',
+      confirmations: 'candidates/confirmations',
+      sessions: 'candidates/sessions'
+    }
+
+    resources :candidates, only: [:create]
   end
 end

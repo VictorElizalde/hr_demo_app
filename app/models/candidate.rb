@@ -1,4 +1,6 @@
 class Candidate < ApplicationRecord
+  acts_as_token_authenticatable
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,12 +10,6 @@ class Candidate < ApplicationRecord
 
   has_many :applications
   has_many :vacancies, :through => :applications
-
-  def generate_jwt
-    JWT.encode({ id: id,
-                exp: 60.days.from_now.to_i },
-               Rails.application.secrets.secret_key_base)
-  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |candidate|

@@ -46,6 +46,7 @@ gem 'simple_form'
 
 # Base Authentication
 gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
+gem 'simple_token_authentication'
 
 # Facebook Authentication
 gem 'omniauth-facebook'
