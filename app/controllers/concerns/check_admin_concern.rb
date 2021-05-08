@@ -7,8 +7,7 @@ module CheckAdminConcern
 
   def redirect_unless_admin
     if current_candidate.try(:role) != "admin"
-      flash[:alert] = "Only admins can enter"
-      redirect_to root_path
+      render json: {"error_message": "Only admins can enter"}, status: :unprocessable_entity
     end
   end
 end
