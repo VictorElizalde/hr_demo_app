@@ -45,6 +45,7 @@ gem 'materialize-sass'
 gem 'simple_form'
 
 # Base Authentication
+gem 'bcrypt', '~> 3.1.7'
 gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 gem 'simple_token_authentication'
 

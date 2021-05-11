@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope '/api/v1', defaults: { format: :json } do
+  namespace :v1, defaults: { format: 'json' } do
     namespace :admin do
       resources :companies, except: [:new, :edit]
       resources :vacancies, only: [:new, :create, :edit, :update, :index, :show, :destroy] do
@@ -26,14 +26,13 @@ Rails.application.routes.draw do
     get 'users', to: 'users#index', as: 'users'
     get 'list_vacancies', to: 'vacancies#list_vacancies', as: 'list_vacancies'
     get 'see_vacancy/:id', to: 'vacancies#see_vacancy', as: 'see_vacancy'
-
-    devise_for :candidates, controllers: { 
-      omniauth_callbacks: 'candidates/omniauth_callbacks',
-      registrations: 'candidates/registrations',
-      confirmations: 'candidates/confirmations',
-      sessions: 'candidates/sessions'
-    }
-
     resources :candidates, only: [:create]
   end
+
+  devise_for :candidates, controllers: { 
+    omniauth_callbacks: 'candidates/omniauth_callbacks',
+    registrations: 'v1/custom_devise/registrations',
+    confirmations: 'v1/custom_devise/confirmations',
+    sessions: 'v1/custom_devise/sessions'
+  }
 end
